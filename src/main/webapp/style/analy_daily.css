@@ -1,0 +1,62 @@
+body {
+    font-size: 12px;
+    font-weight: normal;
+    background: #f0f1f5;
+    color: #666;
+}
+.container {
+    background: #fff;
+    box-shadow: 0 2px 2px #eee;
+}
+
+@media (min-width: 1200px)
+.container {
+    width: 1170px;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.inp-submit-btn {
+    background: #126ed6;
+}
+.inp-submit-btn, .inp-cancel-btn, .inp-normal-btn {
+    min-width: 80px;
+    padding: 0 10px;
+    height: 30px;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+.ml10 {
+    margin-left: 10px;
+}
+body, button, input, textarea {
+    font-family: "microsoft yahei", "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, Tahoma, Arial, Roboto, sans-self;
+}
+input, button, select, textarea {
+    outline: none;
+}
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+}body, button, input, textarea {
+    font-family: "microsoft yahei", "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, Tahoma, Arial, Roboto, sans-self;
+}
+input, button, select, textarea {
+    outline: none;
+}
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+}

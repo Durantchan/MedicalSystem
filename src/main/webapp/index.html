@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head lang="en">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="libs" content="placeholder,md5,easyui,json">
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/map.css" />
+    <link rel="stylesheet" href="style/var.css" />
+    <!-- <link rel="stylesheet" href="less/var.css" />
+    <link rel="stylesheet" href="less/style.css" /> -->
+    <link rel="stylesheet" href="static/js/manage/app/laypage/skin/laypage.css" />
+    <title>医疗报销系统</title>
+</head>
+<body>
+<div class="wrap">
+	<div class="top">
+		<div class="top-main">
+			<div class="fr">您好! <em class="top-client-name"></em>，上次登录时间是<span class="last_online_time"></span>
+			[
+			<a href="javascript:void(0)" class="link mlr5 ModifyPW_btn" style="margin-right: 1px;">修改密码</a>
+			<a href="javascript:void(0)" class="link mlr5 Logout_btn" style="margin-left: 1px;">退出</a>
+			]&nbsp;&nbsp;&nbsp;
+			<a href="javascript:void(0)" class="link mlr5 downlod_guide_doc" style="margin-left: 1px;">下载操作手册</a>
+			</div>
+			<ul class="top-msg-list">
+				<li class="msg-item">
+					<a href="#" class="msg-link">今天<span id="today"></span>，<span id="this_week"></span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- top end -->
+    
+	<div class="header">
+		<div class="header-main">
+			<ul class="hd-info">
+				<li class="hd-info-item">
+					<div class="hd-and-logo"><img src="images/and-logo.jpg" alt=""></div>
+				</li>
+				<li class="hd-info-item">
+					<i class="hd-info-line"></i>
+				</li>
+				<li class="hd-info-item">
+					<div class="hd-cmcc-logo"><img src="images/cmcc-logo.jpg" alt=""></div>
+				</li>
+				<li class="hd-info-item">
+					<div class="hd-title fl">医疗报销系统</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- header end -->
+	<div class="nav-wrap">
+		<ul class="nav clear-fix" id="menu_ul">
+			<li class="nav-item">
+				<a href="#" class="nav-link active">我的主页</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">公共业务</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">医疗基本信息维护</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">医疗待遇审批</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">医保中心报销</a>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link">信息查询</a>
+			</li>
+		</ul>
+	</div>
+
+    <div class="main" id="main_home" style="display:none;">   
+
+	</div>
+	<div class="main" id="main_warp" style="display:none;">   
+
+	</div>
+	<!-- main end -->
+</div>
+<!-- wrap end -->
+</body>
+
+<script type="text/javascript" src="static/js/common/common.js"></script>
+<script type="text/javascript" src="static/lib/layer/layer.js"></script>
+<script type="text/javascript" src="static/lib/jquery.min.js"></script>
+<script type="text/javascript" src="static/lib/jquery.placeholder.js"></script>
+<script type="text/javascript" src="public/js/jquery.base64.js"></script>
+<!-- xenon start -->
+<script src="public/lib/xenon/js/bootstrap.min.js"></script>
+<script src="public/lib/xenon/js/TweenMax.min.js"></script>
+<script src="public/lib/xenon/js/resizeable.js"></script>
+<script src="public/lib/xenon/js/joinable.js"></script>
+<script src="public/lib/xenon/js/xenon-api.js"></script>
+<script src="public/lib/xenon/js/xenon-toggles.js"></script>
+<script src="public/lib/xenon/js/xenon-custom.js"></script>
+<script src="public/lib/xenon/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="public/lib/xenon/js/datatables/dataTables.bootstrap.js"></script>
+<script src="public/lib/xenon/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="public/lib/xenon/js/formwizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="public/lib/xenon/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="public/lib/xenon/js/joinable.js"></script>
+<script src="public/lib/xenon/js/devexpress-web-14.1/js/globalize.min.js"></script>
+<script src="public/lib/xenon/js/devexpress-web-14.1/js/dx.webappjs.js"></script>
+<script src="public/lib/xenon/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+<!-- xenon end -->
+<script src="public/plugins/xform.js"></script>
+<script src="public/plugins/xtable.js"></script>
+<script src="public/plugins/xselect.js"></script>
+<script src="public/plugins/xwizard.js"></script>
+<script type="text/javascript" src="static/js/common/Base.js"></script>
+<script type="text/javascript" src="static/js/manage/app/laypage/laypage.js"></script>
+<script type="text/javascript" src="static/js/common/WYUtil.js"></script>
+<script type="text/javascript" src="static/js/index.js"></script>
+<script type="text/javascript" src="static/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="public/js/dropdown.js"></script>
+<script type="text/javascript" src="static/js/common/validate.js"></script>
+</html>

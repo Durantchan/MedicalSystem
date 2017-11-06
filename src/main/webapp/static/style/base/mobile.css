@@ -1,0 +1,92 @@
+/*CSS reset*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,button,input,textarea,hr,p,blockquote,th,td{margin:0; padding:0;}
+table{border-collapse:collapse; border-spacing:0; width:100%;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,i,strong,th,var{font-style:normal; font-weight:normal;}
+button{background:none; border:none; cursor:pointer; display:inline-block; font-size:12px; vertical-align:middle;}
+ol,ul,li{list-style:none;}
+hr{height:0; border:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:normal;}
+a{text-decoration:none;}
+
+/*CSS common*/
+body{font-size:12px; font-weight:normal; background:#fff; color:#404040;}
+body,button,input,textarea{font-family:"Microsoft YaHei","SimSun"; }
+a{color:#404040;}
+strong{font-weight:bold;}
+th,td{padding:5px 10px;}
+
+.clear-fix:after{display:block; clear:both; content:""; visibility:hidden;height:0;}
+.clear-fix{zoom:1;}
+.clear{clear:both;}
+
+.scroll-bar-warp,.scroll-bar-main,.scroll-bar-btn{height:5px;}
+.scroll-bar-warp{position:absolute; left:0; bottom:0; width:100%; }
+.scroll-bar-main{position:relative; width:100%; background:#f2f2f2;}
+.scroll-bar-btn{position:absolute; left:0; top:0; width:100px; background:#4d99d5;}
+/* 公共组件，滚动条 */
+
+.header-main,.top-main,.warp{margin:0 auto; width:90%;}
+
+.header-bg,.header-main{background:#4d99d5;}
+.header-main{height:70px;}
+.logo,.logo img{width:160px; height:40px;}
+.logo{padding-top:15px;}
+
+.top-bg{background:url("../../images/m-top-bg.png") no-repeat top center; background-size:cover; min-height:600px; margin-bottom:20px;}
+.top-main{padding:20px 0;}
+
+.top-content{position:relative; padding:50px 0 0 350px;}
+.phone{background:url("../../images/m-phone-bg.png") no-repeat; width:300px; height:460px; padding:50px 0; position:absolute; left:0; top:0;}
+.app-info{color:#fff; line-height:1.6; font-size:14px;}
+.app-info h2,.phone-app-info h2{font-size:24px;}
+.app-info h3{font-size:18px; margin-bottom:10px;}
+.app-info-name{margin-bottom:20px;}
+.app-con-tit-note{padding:0 7px; border-radius:3px; height:20px; line-height:20px; background:#9ccc65; color:#fff; text-align:center; display:inline-block; font-size:12px; font-weight:normal; margin-left:5px;}
+
+.app-down-msg{color:#3b3b3b; margin-bottom:20px;}
+.app-down-msg-tit{margin:10px 0; font-size:18px;}
+.app-down-msg-con{line-height:1.6; font-size:14px; }
+
+.add-down-pic-list .add-down-pic-item,.add-down-pic-list .add-down-pic-item img{width:208px; height:370px;}
+.add-down-pic-list .add-down-pic-item{margin:0 10px 10px 0; float:left; background:url("../../images/no-pic-bg.png") no-repeat center #f8f8f8;}
+
+.phone-warp{margin:0 auto; width:280px; height:460px; text-align:center;}
+.phone-item,.phone-top-item{margin-bottom:25px;color:#4d99d5;}
+.phone-top-item{padding-top:30px;}
+.app-pic{margin:0 auto;}
+.app-pic,.app-pic img{width:96px; height:96px;}
+.app-code-pic{margin:0 auto;}
+.app-code-pic,.app-code-pic img{width:128px; height:128px;}
+.phone-app-info{color:#c6c3c7; font-size:12px; text-align:left; display:none;}
+.phone-app-info h2{color:#fff; margin-bottom:8px;}
+
+.phone-button{width:90%; height:48px; line-height:48px; display:block; margin:0 auto; border:2px solid #4d99d5; border-radius:3px; color:#4d99d5; font-size:18px; text-align:center;}
+
+.footer-bg{background:#ececec; padding:26px 0;}
+.footer-main{color:#8e8e8e; overflow:hidden;}
+.footer-main a{color:#8e8e8e;}
+.footer-main a:hover{color:#fff;}
+.footer-copyright{padding-top:10px; float:right;}
+.footer-logo{float:left;}
+.footer-logo,.footer-logo img{width:160px; height:40px;}
+
+
+@media(max-width:630px){
+    .header-bg{display:none;}
+    .top-bg{min-height:0; background:none; padding:0; margin-bottom:0;}
+    .top-main{width:100%; padding-top:0;}
+    .top-content{padding:0; position:static;}
+    .phone{background:url("../../images/m-top-bg.png") no-repeat top center; background-size:cover; width:auto; padding:10px; position:static;}
+    .phone-app-info{display:block;}
+    .app-info{color:#404040; margin:10px auto 0 auto; width:90%;}
+    .app-info-name{display:none;}
+    .phone-warp{width:auto; height:auto;}
+    .phone-top-item{position:relative; min-height:100px; padding:30px 0 0 130px;}
+    .app-pic{position:absolute; left:15px; top:30px;}
+    .phone-button{background:#4d99d5; color:#fff; width:90%;}
+    .phone-button:active{background:#3378c0; border-color:#3378c0;}
+    .footer-logo{display:block; margin:0 auto; float:none;}
+    .footer-copyright{display:block; float:none; text-align:center;}
+}

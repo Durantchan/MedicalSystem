@@ -1,0 +1,23 @@
+.number-query-div{
+	width: 180px;
+    height: 28px;
+    border: 1px solid #126ed6;
+    border-radius: 3px;
+    background: #fff;
+    position: relative;
+    padding: 0 10px 0 10px;
+    display: inline-block;
+    vertical-align: middle;   *
+    zoom: 1;   *
+    display: inline;
+}
+
+.number-query-text{
+	height: 28px;
+    line-height: 28px;
+    width: 100%;
+    color: #666;
+    font-size: 12px;
+    background: none;
+    border: none;
+}

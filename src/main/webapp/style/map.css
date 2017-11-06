@@ -1,0 +1,152 @@
+/** 地图样式 **/
+/*设备地图位置*/
+.dev_addr_map {
+	padding: 10px;
+	height: 600px;
+	width: 98%;
+}
+
+.dev_addr_map .dev_addr_map-con {
+	margin: 0 auto;
+	width: 99%;
+	height: 99%;
+}
+
+.location-map-wrap {
+	position: relative;
+}
+
+.location-map-popup-box {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1200;
+}
+
+.location-map-popup-box .lct-map-popup-main {
+	width: 280px;
+	background: #312e38;
+	position: relative;
+}
+
+.location-map-popup-box .lct-map-popup-arrow-ico {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 20px 30px 0 0;
+	border-color: #312e38 transparent;
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+}
+
+.location-map-popup-box .lct-map-popup-content {
+	padding: 20px;
+	color: #ccc;
+	line-height: 1.6;
+}
+
+.location-map-popup-box .lct-map-popup-tit {
+	margin-bottom: 10px;
+}
+
+.location-map-popup-box .lct-map-popup-tit .lct-name {
+	color: #fff;
+	font-size: 14px;
+	margin-right: 10px;
+}
+
+.location-map-popup-box .lct-map-popup-details {
+	color: #9e97b1;
+}
+
+.location-map-popup-box .lct-map-popup-details .det-th {
+	color: #ccc;
+}
+
+.location-map-popup-box .lct-sign-success, .location-map-popup-box .lct-sign-error
+	{
+	height: 20px;
+	line-height: 20px;
+	border-radius: 10px;
+	padding: 0 10px;
+	text-align: center;
+	color: #fff;
+	font-size: 12px;
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+
+.location-map-popup-box .lct-sign-success {
+	background: #00d075;
+}
+
+.location-map-popup-box .lct-sign-error {
+	background: #ff652f;
+}
+
+/**地图图标 **/
+.map-sign-org-ico {
+	background: url("../images/map-sign-org-icon.png") no-repeat;
+}
+
+.map-sign-black-ico {
+	background: url("../images/map-sign-black-icon.png") no-repeat;
+}
+
+.map-sign-green-ico {
+	background: url("../images/map-sign-green-icon.png") no-repeat;
+}
+
+.map-sign-purple-ico {
+	background: url("../images/map-sign-purple-icon.png") no-repeat;
+}
+
+.map-sign-red-ico {
+	background: url("../images/map-sign-red-icon.png") no-repeat;
+}
+
+.map-sign-yellow-ico {
+	background: url("../images/map-sign-yellow-icon.png") no-repeat;
+}
+
+.map-sign-blue-ico {
+	background: url("../images/map-sign-blue-icon.png") no-repeat;
+}
+
+.map-sign-org-ico, .map-sign-black-ico, .map-sign-green-ico,
+	.map-sign-purple-ico, .map-sign-red-ico, .map-sign-yellow-ico,
+	.map-sign-blue-ico {
+	width: 24px;
+	height: 20px;
+	color: #fff;
+	font-size: #666;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+
+.a-upload {
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}

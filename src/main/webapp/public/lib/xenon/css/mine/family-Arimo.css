@@ -1,0 +1,25 @@
+/**
+ *
+ * 来自在线请求的样式，此样式来源于：
+ * http://fonts.useso.com/css?family=Arimo:400,700,400italic
+ *
+*/
+
+@font-face {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arimo'), url(woff/ZS0wkeOZuckNE3boyLYNt6CWcynf_cDxXwCLxiixG1c.woff) format('woff');
+}
+@font-face {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arimo Bold'), local('Arimo-Bold'), url(woff/UnXpojilM3XslYxUnWuVe3YhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Arimo';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Arimo Italic'), local('Arimo-Italic'), url(woff/4x7GlnDRx9FKnMrqORHWMQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}

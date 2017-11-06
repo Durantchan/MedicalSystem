@@ -1,0 +1,9 @@
+.chat-tab-list,
+.chat-tab-list li{list-style:none; margin:0; padding:0;}
+.chat-tab-list li em,strong,i{font-style:normal;}
+.chat-tab-list li{padding: 6px 35px; font-size:12px; display:block; position:relative;}
+.chat-tab-list li a{color:#979898; display:block;}
+.chat-tab-list li a:hover,.chat-tab-list li a:active{color:#717272;}
+.chat-tab-list li .close-btn{position:absolute; top:50%; right:10px; cursor:pointer; margin-top:-6px; color:#979898; font-size:12px; z-index:100;}
+.chat-tab-list li.active{background:#eee;}
+.chat-tab-list li.active a{color:#717272;}
