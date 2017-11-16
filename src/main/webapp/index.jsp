@@ -6,6 +6,6 @@
 <title>主页</title>
 </head>
 <body>
-<h3>欢迎，${user.username }</h3>
+<h3>欢迎，${user.account}</h3>
 </body>
 </html>

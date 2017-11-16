@@ -1,122 +1,357 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head lang="en">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="libs" content="placeholder,md5,easyui,json">
-    <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/map.css" />
-    <link rel="stylesheet" href="style/var.css" />
-    <!-- <link rel="stylesheet" href="less/var.css" />
-    <link rel="stylesheet" href="less/style.css" /> -->
-    <link rel="stylesheet" href="static/js/manage/app/laypage/skin/laypage.css" />
-    <title>医疗报销系统</title>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>医疗报销中心报销系统</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/ace.min.css" id="main-ace-style" />
+	<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" />
+		<![endif]-->
+	<link rel="stylesheet" href="css/ace-skins.min.css" />
+	<link rel="stylesheet" href="css/ace-rtl.min.css" />
+	<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+	<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
 </head>
-<body>
-<div class="wrap">
-	<div class="top">
-		<div class="top-main">
-			<div class="fr">您好! <em class="top-client-name"></em>，上次登录时间是<span class="last_online_time"></span>
-			[
-			<a href="javascript:void(0)" class="link mlr5 ModifyPW_btn" style="margin-right: 1px;">修改密码</a>
-			<a href="javascript:void(0)" class="link mlr5 Logout_btn" style="margin-left: 1px;">退出</a>
-			]&nbsp;&nbsp;&nbsp;
-			<a href="javascript:void(0)" class="link mlr5 downlod_guide_doc" style="margin-left: 1px;">下载操作手册</a>
+
+<body class="no-skin">
+	<div id="navbar" class="navbar navbar-default">
+		<div class="navbar-container" id="navbar-container">
+			<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+				<span class="sr-only">Toggle sidebar</span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+			</button>
+			<!-- /section:basics/sidebar.mobile.toggle -->
+			<div class="navbar-header pull-left">
+				<!-- #section:basics/navbar.layout.brand -->
+				<a href="index.html" class="navbar-brand">
+					<small>
+						<p>医疗报销中心报销系统</p>
+					</small>
+				</a>
 			</div>
-			<ul class="top-msg-list">
-				<li class="msg-item">
-					<a href="#" class="msg-link">今天<span id="today"></span>，<span id="this_week"></span></a>
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<li class="light-blue">
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+							<img class="nav-user-photo" src="avatars/user.jpg" alt="Jason's Photo" />
+							<span class="user-info">
+								欢迎您
+								<br /> 陈子昂
+							</span>
+							<i class="ace-icon fa fa-caret-down"></i>
+						</a>
+
+						<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="#">
+									<i class="ace-icon fa fa-cog"></i>
+									系统设置
+								</a>
+							</li>
+
+							<li>
+								<a href="profile.html">
+									<i class="ace-icon fa fa-user"></i>
+									个人信息设置
+								</a>
+							</li>
+
+							<li class="divider"></li>
+
+							<li>
+								<a href="login.html">
+									<i class="ace-icon fa fa-power-off"></i>
+									登出
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- /section:basics/navbar.dropdown -->
+		</div>
+		<!-- /.navbar-container -->
+	</div>
+	<!-- /section:basics/navbar.layout -->
+	<div class="main-container" id="main-container">
+		<!-- #section:basics/sidebar -->
+		<div id="sidebar" class="sidebar responsive">
+			<ul class="nav nav-list">
+				<li class="active">
+					<a href="index.html">
+						<i class="menu-icon fa fa-tachometer"></i>
+						<span class="menu-text"> 报销系统 </span>
+					</a>
+					<b class="arrow"></b>
+				</li>
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text"> 人员信息 </span>
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li class="">
+							<a href="insurant.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								参保人信息
+							</a>
+							<b class="arrow"></b>
+						</li>
+
+						<li class="">
+							<a href="insuredCompany.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								参保单位信息
+							</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-pencil-square-o"></i>
+						<span class="menu-text"> 医疗信息 </span>
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li class="">
+							<a href="medicine.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								药品信息
+							</a>
+							<b class="arrow"></b>
+						</li>
+
+						<li class="">
+							<a href="clinicItems.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								诊疗项目信息
+							</a>
+							<b class="arrow"></b>
+						</li>
+
+						<li class="">
+							<a href="serviceFacility.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								服务设施项目
+							</a>
+							<b class="arrow"></b>
+						</li>
+						<li class="">
+							<a href="calculationParameter.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								费用计算参数
+							</a>
+							<b class="arrow"></b>
+						</li>
+
+						<li class="">
+							<a href="medicalInstitutions.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								定点医疗机构信息
+							</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-list"></i>
+						<span class="menu-text"> 审批 </span>
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li class="">
+							<a href="qualificationExamination.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								报销资格审批
+							</a>
+							<b class="arrow"></b>
+						</li>
+
+					</ul>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-list-alt"></i>
+						<span class="menu-text"> 报销 </span>
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li class="">
+							<a href="reimbursement.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								审核报销
+							</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-search"></i>
+						<span class="menu-text"> 信息查询 </span>
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li class="">
+							<a href="costSearch.html">
+								<i class="menu-icon fa fa-caret-right"></i>
+								费用信息查询
+							</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
 				</li>
 			</ul>
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+			</div>
 		</div>
-	</div>
-	<!-- top end -->
-    
-	<div class="header">
-		<div class="header-main">
-			<ul class="hd-info">
-				<li class="hd-info-item">
-					<div class="hd-and-logo"><img src="images/and-logo.jpg" alt=""></div>
-				</li>
-				<li class="hd-info-item">
-					<i class="hd-info-line"></i>
-				</li>
-				<li class="hd-info-item">
-					<div class="hd-cmcc-logo"><img src="images/cmcc-logo.jpg" alt=""></div>
-				</li>
-				<li class="hd-info-item">
-					<div class="hd-title fl">医疗报销系统</div>
-				</li>
-			</ul>
+
+		<!-- /section:basics/sidebar -->
+		<div class="main-content">
+			<!-- #section:basics/content.breadcrumbs -->
+			<div class="breadcrumbs" id="breadcrumbs">
+				<ul class="breadcrumb">
+					<li>
+						<i class="ace-icon fa fa-home home-icon"></i>
+						<a href="index.html">系统首页</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="page-content">
+				<div class="page-content-area">
+					<div class="page-header text-center">
+						<h1>欢迎使用医疗报销中心报销系统</h1>
+					</div>
+					<div class="row ">
+						<div class="col-lg-4 col-md-4 col-sm-4  text-center">
+							<a href="insurant.html">
+								<div class="alert alert-info">
+									<i class="fa fa-user fa-4x"></i>
+									<p>参保人</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4  text-center">
+							<a href="insuredCompany.html">
+								<div class="alert alert-info">
+									<i class="fa fa-users fa-4x"></i>
+									<p>参保单位</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4  text-center">
+							<a href="calculationParameter.html">
+								<div class="alert alert-info">
+									<i class="fa fa-wrench fa-4x"></i>
+									<p>费用计算参数</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4  text-center">
+							<a href="qualificationExamination.html">
+								<div class="alert alert-info">
+									<i class="fa fa-stethoscope fa-4x"></i>
+									<p>审批</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4 text-center">
+							<a href="reimbursement.html">
+								<div class="alert alert-info">
+									<i class="fa fa-rmb fa-4x"></i>
+									<p>报销</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4  text-center">
+							<a href="costSearch.html">
+								<div class="alert alert-info">
+									<i class="fa fa-search fa-4x"></i>
+									<p>费用信息查询</p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.page-content-area -->
+			</div>
+			<!-- /.page-content -->
 		</div>
-	</div>
-	<!-- header end -->
-	<div class="nav-wrap">
-		<ul class="nav clear-fix" id="menu_ul">
-			<li class="nav-item">
-				<a href="#" class="nav-link active">我的主页</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">公共业务</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">医疗基本信息维护</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">医疗待遇审批</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">医保中心报销</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">信息查询</a>
-			</li>
-		</ul>
-	</div>
+		<!-- /.main-content -->
 
-    <div class="main" id="main_home" style="display:none;">   
+		<div class="footer">
+			<div class="footer-inner">
+				<!-- #section:basics/footer -->
+				<div class="footer-content">
+					<span class="bigger-120">
+						@2017 SCAU
+					</span>
+				</div>
+				<!-- /section:basics/footer -->
+			</div>
+		</div>
 
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
 	</div>
-	<div class="main" id="main_warp" style="display:none;">   
+	<!-- /.main-container -->
 
-	</div>
-	<!-- main end -->
-</div>
-<!-- wrap end -->
+	<!--[if !IE]> -->
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='js/jquery.min.js'>" + "<" + "/script>");
+	</script>
+	<!-- <![endif]-->
+	<!--[if IE]>
+			<script type="text/javascript">
+			 window.jQuery || document.write("<script src='js/jquery1x.min.js'>"+"<"+"/script>");
+			</script>
+		<![endif]-->
+	<script type="text/javascript">
+		if ('ontouchstart' in document.documentElement) document.write("<script src='js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+	</script>
+	<script src="js/bootstrap.min.js"></script>
+	<!--[if lte IE 8]>
+		  <script src="assets/js/excanvas.min.js"></script>
+		<![endif]-->
+	<!-- <script src="assets/js/jquery-ui.custom.min.js"></script> -->
+	<!-- <script src="assets/js/jquery.ui.touch-punch.min.js"></script> -->
+	<!-- <script src="assets/js/ace-elements.min.js"></script> -->
+	<script src="js/ace.min.js"></script>
+	<script src="js/ace-extra.min.js"></script>
+
 </body>
 
-<script type="text/javascript" src="static/js/common/common.js"></script>
-<script type="text/javascript" src="static/lib/layer/layer.js"></script>
-<script type="text/javascript" src="static/lib/jquery.min.js"></script>
-<script type="text/javascript" src="static/lib/jquery.placeholder.js"></script>
-<script type="text/javascript" src="public/js/jquery.base64.js"></script>
-<!-- xenon start -->
-<script src="public/lib/xenon/js/bootstrap.min.js"></script>
-<script src="public/lib/xenon/js/TweenMax.min.js"></script>
-<script src="public/lib/xenon/js/resizeable.js"></script>
-<script src="public/lib/xenon/js/joinable.js"></script>
-<script src="public/lib/xenon/js/xenon-api.js"></script>
-<script src="public/lib/xenon/js/xenon-toggles.js"></script>
-<script src="public/lib/xenon/js/xenon-custom.js"></script>
-<script src="public/lib/xenon/js/datatables/js/jquery.dataTables.min.js"></script>
-<script src="public/lib/xenon/js/datatables/dataTables.bootstrap.js"></script>
-<script src="public/lib/xenon/js/jquery-ui/jquery-ui.min.js"></script>
-<script src="public/lib/xenon/js/formwizard/jquery.bootstrap.wizard.min.js"></script>
-<script src="public/lib/xenon/js/selectboxit/jquery.selectBoxIt.min.js"></script>
-<script src="public/lib/xenon/js/joinable.js"></script>
-<script src="public/lib/xenon/js/devexpress-web-14.1/js/globalize.min.js"></script>
-<script src="public/lib/xenon/js/devexpress-web-14.1/js/dx.webappjs.js"></script>
-<script src="public/lib/xenon/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
-<!-- xenon end -->
-<script src="public/plugins/xform.js"></script>
-<script src="public/plugins/xtable.js"></script>
-<script src="public/plugins/xselect.js"></script>
-<script src="public/plugins/xwizard.js"></script>
-<script type="text/javascript" src="static/js/common/Base.js"></script>
-<script type="text/javascript" src="static/js/manage/app/laypage/laypage.js"></script>
-<script type="text/javascript" src="static/js/common/WYUtil.js"></script>
-<script type="text/javascript" src="static/js/index.js"></script>
-<script type="text/javascript" src="static/js/My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript" src="public/js/dropdown.js"></script>
-<script type="text/javascript" src="static/js/common/validate.js"></script>
 </html>
