@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.MechanismDao">
+	<select id="findAllMechanism" resultType="Map">
+		select * from mechanism;
+	</select>
+	
+	<select id="findMechanismByAttribute" parameterType="Map" resultType="Map">
+		select * from mechanism t where 
+		1=1
+		<if test="mechanism_name != null and mechanism_name != ''">
+		and t.mechanism_name = #{mechanism_name}
+		</if>
+		<if test="mechanism_type != null and mechanism_type != ''">
+		and t.mechanism_type = #{mechanism_type}
+		</if>
+	</select>
+	
+	<insert id="addNewMechanism" parameterType="Map">
+	insert into mechanism (mechanism_name,mechanism_address,mechanism_type,mechanism_phone) 
+	values (#{mechanism_name},#{mechanism_address},#{mechanism_type},#{mechanism_phone})
+	</insert>
+	
+	<delete id="deleteMechanismByPatch" parameterType="Map">
+		begin
+		<foreach collection="mechanism_list" item="item" index="index" separator=";" close=";">
+		delete from mechanism m where 1=1 and m.mechanism_name = #{item}
+		</foreach>
+		end;
+	</delete>
+	
+	<delete id="deleteMechanismBySingle" parameterType="Map">
+		delete from mechanism m where 1=1 and m.mechanism_name = #{mechanism_name}
+	</delete>
+	
+	<update id="updateMechanism" parameterType="Map">
+	update mechanism set mechanism_type = #{mechanism_type}, mechanism_address = #{mechanism_address}, mechanism_phone = #{mechanism_phone}
+	where mechanism_name = #{mechanism_name}
+	</update>
+</mapper>

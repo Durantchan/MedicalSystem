@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.MedicineDao">
+	<select id="findAllMedicine" resultType="Map">
+		select * from drug;
+	</select>
+	
+	<select id="findMedicineByAttribute" parameterType="Map" resultType="Map">
+		select * from drug t where 
+		1=1
+		<if test="drug_name != null and drug_name != ''">
+		and t.drug_name = #{drug_name}
+		</if>
+		<if test="drug_type != null and drug_type != ''">
+		and t.drug_type = #{drug_type}
+		</if>
+	</select>
+	
+	<insert id="addNewMedicine" parameterType="Map">
+	insert into drug (drug_name,drug_type,manufacturer,price,drug_propotion,drug_insurance,message) 
+	values (#{drug_name},#{drug_type},#{manufacturer},#{price},#{drug_propotion},#{drug_insurance},#{message})
+	</insert>
+	
+	<delete id="deleteMedicineByPatch" parameterType="Map">
+		begin
+		<foreach collection="medicine_list" item="item" index="index" separator=";" close=";">
+		delete from drug m where 1=1 and m.drug_name = #{item}
+		</foreach>
+		end;
+	</delete>
+	
+	<delete id="deleteMedicineBySingle" parameterType="Map">
+		delete from drug m where 1=1 and m.drug_name = #{drug_name}
+	</delete>
+	
+	<update id="updateMedicine" parameterType="Map">
+	update drug set drug_type = #{drug_type}, manufacturer = #{manufacturer}, price = #{price}, 
+	drug_propotion = #{drug_propotion}, drug_insurance = #{drug_insurance}, message = #{message}
+	where drug_name = #{drug_name}
+	</update>
+</mapper>

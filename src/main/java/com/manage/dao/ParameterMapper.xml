@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.ParameterDao">
+	<select id="findAllParameter" resultType="Map">
+		select * from parameter;
+	</select>
+	
+	<select id="findParameterBySingle" parameterType="Map" resultType="Map">
+		select * from parameter t where 
+		1=1
+		<if test="param_name != null and param_name != ''">
+		and t.param_name = #{param_name}
+		</if>
+		<if test="param_value != null and param_value != ''">
+		and t.param_value = #{param_value}
+		</if>
+	</select>
+	
+	<insert id="addNewParameter" parameterType="Map">
+	insert into parameter (param_name,param_value) 
+	values (#{param_name},#{param_value})
+	</insert>
+	
+	<delete id="deleteParameterByPatch" parameterType="Map">
+		begin
+		<foreach collection="parameter_list" item="item" index="index" separator=";" close=";">
+		delete from parameter m where 1=1 and m.param_name = #{item}
+		</foreach>
+		end;
+	</delete>
+	
+	<delete id="deleteParameterBySingle" parameterType="Map">
+		delete from parameter m where 1=1 and m.param_name = #{param_name}
+	</delete>
+	
+	<update id="updateParameter" parameterType="Map">
+	update parameter set param_value = #{param_value}
+	where param_name = #{param_name}
+	</update>
+</mapper>

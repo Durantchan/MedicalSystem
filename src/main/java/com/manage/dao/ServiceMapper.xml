@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.ServiceDao">
+	<select id="findAllService" resultType="Map">
+		select * from service;
+	</select>
+	
+	<select id="findServiceByAttribute" parameterType="Map" resultType="Map">
+		select * from service t where 
+		1=1
+		<if test="service_type != null and service_type != ''">
+		and t.service_type = #{service_type}
+		</if>
+	</select>
+	
+	<insert id="addNewService" parameterType="Map">
+	insert into service (service_type,service_info,service_propotion) 
+	values (#{service_type},#{service_info},#{service_propotion})
+	</insert>
+	
+	<delete id="deleteServiceByPatch" parameterType="Map">
+		begin
+		<foreach collection="service_list" item="item" index="index" separator=";" close=";">
+		delete from service m where 1=1 and m.service_type = #{item}
+		</foreach>
+		end;
+	</delete>
+	
+	<delete id="deleteServiceBySingle" parameterType="Map">
+		delete from service m where 1=1 and m.service_type = #{service_type}
+	</delete>
+	
+	<update id="updateService" parameterType="Map">
+	update service set service_info = #{service_info}, service_propotion = #{service_propotion}
+	where service_type = #{service_type}
+	</update>
+</mapper>

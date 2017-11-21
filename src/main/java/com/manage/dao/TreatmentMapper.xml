@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.TreatmentDao">
+	<select id="findAllTreatment" resultType="Map">
+		select * from treatment;
+	</select>
+	
+	<select id="findTreatmentByAttribute" parameterType="Map" resultType="Map">
+		select * from treatment t where 
+		1=1
+		<if test="treat_name != null and treat_name != ''">
+		and t.treat_name = #{treat_name}
+		</if>
+		<if test="treat_type != null and treat_type != ''">
+		and t.treat_type = #{treat_type}
+		</if>
+	</select>
+	
+	<insert id="addNewTreatment" parameterType="Map">
+	insert into treatment (treat_name,treat_type,treat_info,cost,treat_insurance,treat_propotion) 
+	values (#{treat_name},#{treat_type},#{treat_info},#{cost},#{treat_insurance},#{treat_propotion})
+	</insert>
+	
+	<delete id="deleteTreatmentByPatch" parameterType="Map">
+		begin
+		<foreach collection="treat_list" item="item" index="index" separator=";" close=";">
+		delete from treatment m where 1=1 and m.treat_name = #{item}
+		</foreach>
+		end;
+	</delete>
+	
+	<delete id="deleteTreatmentBySingle" parameterType="Map">
+		delete from treatment m where 1=1 and m.treat_name = #{treat_name}
+	</delete>
+	
+	<update id="updateTreatment" parameterType="Map">
+	update treatment set treat_type = #{treat_type}, treat_info = #{treat_info}, cost = #{cost}, 
+	treat_insurance = #{treat_insurance}, treat_propotion = #{treat_propotion}
+	where treat_name = #{treat_name}
+	</update>
+</mapper>
