@@ -5,9 +5,8 @@
 		select * from drug;
 	</select>
 	
-	<select id="findMedicineByAttribute" parameterType="Map" resultType="Map">
-		select * from drug t where 
-		1=1
+	<select id="findMedicineByAttribute" parameterType="Map" resultType="com.manage.domain.Medicine">
+		select * from drug t where 1=1
 		<if test="drug_name != null and drug_name != ''">
 		and t.drug_name = #{drug_name}
 		</if>
@@ -24,13 +23,13 @@
 	<delete id="deleteMedicineByPatch" parameterType="Map">
 		begin
 		<foreach collection="medicine_list" item="item" index="index" separator=";" close=";">
-		delete from drug m where 1=1 and m.drug_name = #{item}
+		delete from drug where drug_name = #{item}
 		</foreach>
 		end;
 	</delete>
 	
 	<delete id="deleteMedicineBySingle" parameterType="Map">
-		delete from drug m where 1=1 and m.drug_name = #{drug_name}
+		delete from drug where drug_name = #{drug_name}
 	</delete>
 	
 	<update id="updateMedicine" parameterType="Map">

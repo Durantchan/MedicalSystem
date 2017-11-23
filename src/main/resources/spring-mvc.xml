@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task" 
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 启动自动扫描 -->
     <context:component-scan base-package="com.manage.*" />
+<!--     <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" /> -->
+<!-- 	<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/> -->
+<!-- 	<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" /> -->
+<!-- 	</context:component-scan> -->
 
     <!-- 注册MVC注解驱动 -->
     <mvc:annotation-driven />
+	        <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+    		<property name="messageConverters">  
+        	<list>  
+            <ref bean="jsonHttpMessageConverter" />  
+        	</list>  
+    		</property>  
+			</bean>  
+  
+			<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+	   	 	<property name="supportedMediaTypes">  
+        	<list>  
+            <value>application/json;charset=UTF-8</value>  
+        	</list>  
+    		</property>  
+			</bean>  
+<!-- 	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true" /> -->
+	
+<!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.CustomHandlerMapping"> -->
+<!-- 		<property name="order" value="-1" /> -->
+<!-- 	</bean> -->
 
+<!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.CustomHandlerAdapter"> -->
+<!-- 		<property name="order" value="-1" /> -->
+<!-- 		<property name="messageConverters"> -->
+<!-- 			<list> -->
+<!-- 				<ref bean="json2HttpMessageConverter" /> -->
+<!-- 				<ref bean="securityjson2HttpMessageConverter" /> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
     <!-- 静态资源可访问的设置方式 -->
     <mvc:default-servlet-handler />
 
@@ -20,6 +59,6 @@
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/" />
-        <property name="suffix" value=".jsp" />
+        <property name="suffix" value=".js" />
     </bean>
 </beans>

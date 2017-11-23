@@ -1,312 +1,262 @@
-$(function() {
-		var grid_data =
-            [
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-                { name: "感冒药", type: "1231", manufacturer: "1233", price: "444", insurance: "否", propotion: "11", message: "123131" },
-
-            ];
-		jQuery(function ($) {
-            var grid_selector = "#grid-table";
-            var pager_selector = "#grid-pager";
-
-            //resize to fit page size
-            $(window).on('resize.jqGrid', function () {
-                $(grid_selector).jqGrid('setGridWidth', $(".page-content").width());
-            })
-            //resize on sidebar collapse/expand
-            var parent_column = $(grid_selector).closest('[class*="col-"]');
-            $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
-                if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
-                    //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
-                    setTimeout(function () {
-                        $(grid_selector).jqGrid('setGridWidth', parent_column.width());
-                    }, 0);
-                }
-            })
-
-
-            debugger
-            jQuery(grid_selector).jqGrid({
-                url: "/medicaltreatment/src/main/java/com/manage/controller/medicine/query",
-            	subGrid: false,
-                data: "json",
-                datatype: "local",
-                height: 360,
-                colNames: [' ', '药品名', '药品类型', '生产厂商', '价格', '是否在医保内', '报销比例', '功能'],
-                colModel: [
-                    {
-                        name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
-                        formatter: 'actions',
-                        formatoptions: {
-                            keys: true,
-                            //delbutton: false,//disable delete button
-                            delOptions: { recreateForm: true, beforeShowForm: beforeDeleteCallback },
-                            //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-                        }
-                    },
-                    { name: 'name', index: 'name', width: 90, editable: true },
-                    { name: 'type', index: 'type', width: 90, editable: true },
-                    { name: 'manufacturer', index: 'manufacturer', width: 150, editable: true },
-                    { name: 'price', index: 'price', width: 50, editable: true, sorttype: "int" },
-                    { name: 'insurance', index: 'insurance', width: 100, editable: true,editoptions: { value: "是:否" } },
-                    { name: 'propotion', index: 'propotion', width: 50, sorttype: "int", editable: true },
-                    { name: 'message', index: 'message', width: 150, editable: true }
-                ],
-
-                viewrecords: true,
-                rowNum: 10,
-                rowList: [10, 20, 30],
-                pager: pager_selector,
-                altRows: true,
-                //toppager: true,
-                multiselect: true,
-                //multikey: "ctrlKey",
-                multiboxonly: true,
-
-                loadComplete: function () {
-                    var table = this;
-                    setTimeout(function () {
-                        styleCheckbox(table);
-                        updateActionIcons(table);
-                        updatePagerIcons(table);
-                        enableTooltips(table);
-                    }, 0);
-                },
-
-                editurl: "",
-                caption: "药品列表"
-            });
-            $(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
-
-
-            //switch element when editing inline
-            function aceSwitch(cellvalue, options, cell) {
-                setTimeout(function () {
-                    $(cell).find('input[type=checkbox]')
-                        .addClass('ace ace-switch ace-switch-5')
-                        .after('<span class="lbl"></span>');
-                }, 0);
-            }
-
-            //navButtons
-            jQuery(grid_selector).jqGrid('navGrid', pager_selector,
-                { 	//navbar options
-                    edit: true,
-                    editicon: 'ace-icon fa fa-pencil blue',
-                    add: true,
-                    addicon: 'ace-icon fa fa-plus-circle purple',
-                    del: true,
-                    delicon: 'ace-icon fa fa-trash-o red',
-                    search: true,
-                    searchicon: 'ace-icon fa fa-search orange',
-                    refresh: true,
-                    refreshicon: 'ace-icon fa fa-refresh green',
-                    view: true,
-                    viewicon: 'ace-icon fa fa-search-plus grey',
-                },
-                {
-                    //edit record form
-                    //closeAfterEdit: true,
-                    //width: 700,
-                    recreateForm: true,
-                    beforeShowForm: function (e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                        style_edit_form(form);
-                    }
-                },
-                {
-                    //new record form
-                    //width: 700,
-                    closeAfterAdd: true,
-                    recreateForm: true,
-                    viewPagerButtons: false,
-                    beforeShowForm: function (e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
-                            .wrapInner('<div class="widget-header" />')
-                        style_edit_form(form);
-                    }
-                },
-                {
-                    //delete record form
-                    recreateForm: true,
-                    beforeShowForm: function (e) {
-                        var form = $(e[0]);
-                        if (form.data('styled')) return false;
-
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                        style_delete_form(form);
-
-                        form.data('styled', true);
-                    },
-                    onClick: function (e) {
-                        alert(1);
-                    }
-                },
-                {
-                    //search form
-                    recreateForm: true,
-                    afterShowSearch: function (e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-                        style_search_form(form);
-                    },
-                    afterRedraw: function () {
-                        style_search_filters($(this));
-                    }
-                    ,
-                    multipleSearch: true,
-					/**
-					multipleGroup:true,
-					showQuery: true
-					*/
-                },
-                {
-                    //view record form
-                    recreateForm: true,
-                    beforeShowForm: function (e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-                    }
-                }
-            )
-
-
-
-            function style_edit_form(form) {
-               
-                //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
-                //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-
-                //update buttons classes
-                var buttons = form.next().find('.EditButton .fm-button');
-                buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
-                buttons.eq(0).addClass('btn-primary').prepend('<i class="ace-icon fa fa-check"></i>');
-                buttons.eq(1).prepend('<i class="ace-icon fa fa-times"></i>')
-
-                buttons = form.next().find('.navButton a');
-                buttons.find('.ui-icon').hide();
-                buttons.eq(0).append('<i class="ace-icon fa fa-chevron-left"></i>');
-                buttons.eq(1).append('<i class="ace-icon fa fa-chevron-right"></i>');
-            }
-
-            function style_delete_form(form) {
-                var buttons = form.next().find('.EditButton .fm-button');
-                buttons.addClass('btn btn-sm btn-white btn-round').find('[class*="-icon"]').hide();//ui-icon, s-icon
-                buttons.eq(0).addClass('btn-danger').prepend('<i class="ace-icon fa fa-trash-o"></i>');
-                buttons.eq(1).addClass('btn-default').prepend('<i class="ace-icon fa fa-times"></i>')
-            }
-
-            function style_search_filters(form) {
-                form.find('.delete-rule').val('X');
-                form.find('.add-rule').addClass('btn btn-xs btn-primary');
-                form.find('.add-group').addClass('btn btn-xs btn-success');
-                form.find('.delete-group').addClass('btn btn-xs btn-danger');
-            }
-            function style_search_form(form) {
-                var dialog = form.closest('.ui-jqdialog');
-                var buttons = dialog.find('.EditTable')
-                buttons.find('.EditButton a[id*="_reset"]').addClass('btn btn-sm btn-info').find('.ui-icon').attr('class', 'ace-icon fa fa-retweet');
-                buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'ace-icon fa fa-comment-o');
-                buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'ace-icon fa fa-search');
-            }
-
-            function beforeDeleteCallback(e) {
-                var form = $(e[0]);
-                if (form.data('styled')) return false;
-
-                form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                style_delete_form(form);
-
-                form.data('styled', true);
-            }
-
-            function beforeEditCallback(e) {
-                var form = $(e[0]);
-                form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-                style_edit_form(form);
-            }
-
-
-
-            //it causes some flicker when reloading or navigating grid
-            //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
-            //or go back to default browser checkbox styles for the grid
-            function styleCheckbox(table) {
-				/**
-					$(table).find('input:checkbox').addClass('ace')
-					.wrap('<label />')
-					.after('<span class="lbl align-top" />')
+(function(){ 
+	var medicine = Base.extend({
+		init : function(){ 
+			var me = this;
+			me.queryMedicine();
+			me.bindEvent();
+		},
+		
+		bindEvent : function(){
+			var me = this;
 			
+			$("#btn_add").click(function () {
+				$("#myModalLabel").text("新增");
+				$('#myModal').modal();
+			});
 			
-					$('.ui-jqgrid-labels th[id*="_cb"]:first-child')
-					.find('input.cbox[type=checkbox]').addClass('ace')
-					.wrap('<label />').after('<span class="lbl align-top" />');
-				*/
-            }
+			$("#btn_submit").click(function(){
+				me.addNewMedicine();
+			});
+			
+			$("#btn_search").click(function(){
+				me.querySomeMedicine();
+			});
+			
+			$("#btn_update").click(function(){
+				var checkbox = $("#form_table").find("input:checked");
+				if (!checkbox || checkbox.length == 0) {
+					alert("请选择要修改的药品");
+					return;
+				}
+				var data = checkbox.closest("tr").data("data");
+				$("#myModel #drug_name").val(data.drug_name);
+				$("#myModel #drug_type").val(data.drug_type);
+				$("#myModel #drug_manufacturer").val(data.manufacturer);
+				$("#myModel #drug_price").val(data.price);
+				$("#myModel #drug_insurance").val(data.drug_propotion);
+				$("#myModel #drug_propotion").val(data.drug_insurance);
+				$("#myModel #drug_message").val(data.message);
+				$("#myModelLabel").text("修改");
+				$('#myModel').modal();
+			});
+			
+			$("#submit").click(function(){
+				me.updateMedicine();
+			});
+			
+			$("#btn_delete").click(function(){
+				me.deleteMedicine();
+			});
+		},
+		
+		queryMedicine : function(param){
+			
+			var me = this;
+			if(!param) param = new Object();
+			param.pn = 0;
+			$.ajax({
+				type : "POST",
+				url : "medicine/querySome.action",
+				dataType: "json",
+				data:param,
+				success: function(result){
+					me.initTableData(result.page.list);
+					me.build_page_nav("medicine/querySome.action",result);
+				}
+			
+			});
+		},
+		
+		initTableData : function(data){
+			
+			var me = this;
+			$("#data_list #form_table").find("tr:not(:first)").remove();
+			if(data.length!=0){
+			$.each(data, function(i, drug_name){
+				var curr = $("#data_list #tr_template").clone().removeAttr("id").show();
+				curr.data("data", drug_name);				
+				WYUtil.setInputDomain(drug_name, curr);
+				$("#data_list #form_table").append(curr);
+				});
+			}
+			else{
+				var error_tr = '<tr><td colspan="99" align="center"><font color="red">暂无数据</font></td></tr>';
+				$("#data_list #form_table").append(error_tr);
+			}
+		},
+		
+		addNewMedicine : function(){
+			var me = this;
+			var param = {};
+			param.drug_name = $("#name").val();
+			if(null==param.drug_name || ""==param.drug_name)
+				alert("药品名不能为空");
+			else{
+			param.drug_type = $("#type").val();
+			param.manufacturer = $("#manufacturer").val();
+			param.price = $("#price").val();
+			param.drug_propotion = $("#propotion").val();
+			param.drug_insurance = $("#insurance").val();
+			param.message = $("#message").val();
+			if(param.drug_insurance=="是") param.drug_insurance = 1;
+			else param.drug_insurance = 0;
+			$.ajax({
+				type:"POST",
+				url:"medicine/add.action",
+				data:param,
+				datatype:"json",
+				success:function(result){
+					if(result=="0000")
+						alert("添加成功");
+					else 
+						alert("添加失败");
+						
+				}
+			});
+			me.queryMedicine();
+			}
+		},
+		
+		querySomeMedicine : function(){
 
+			var me = this;
+			var param = {};
+			var name = $("#Name").val();
+			var type = $("#Type").val();
+			if((null==name || ""==name) && (null==type || ""==type))
+				alert("查询条件不能为空");
+			else{
+			param.drug_name = name;
+			param.drug_type = type;
+			me.queryMedicine(param);
+			}
+		},
+		
+		updateMedicine : function(){
+			var me = this;
+			var param = {};
+			var name = $("#myModel #drug_name").val();
+			var type = $("#myModel #drug_type").val();
+			var manufacturer =$("#myModel #drug_manufacturer").val();
+			var price = $("#myModel #drug_price").val();
+			var propotion = $("#myModel #drug_insurance").val();
+			var insurance = $("#myModel #drug_propotion").val();
+			var message = $("#myModel #drug_message").val();
+			if(null==name || ""==name){
+				alert("药品名不能为空");
+				return;
+			}
+			if(insurance=="是") insurance = 1;
+			else insurance = 0;
+			param.drug_name = name;
+			param.drug_type = type;
+			param.manufacturer = manufacturer;
+			param.price = price;
+			param.drug_propotion = propotion;
+			param.drug_insurance = insurance;
+			param.message = message;
+			$.ajax({
+				type:"POST",
+				url:"medicine/update.action",
+				data:param,
+				datatype:"json",
+				success:function(result){
+					if(result=="0000")
+						alert("修改成功");
+					else 
+						alert("修改失败");
+				}
+			});
+			me.queryMedicine();
+		},
+		
+		deleteMedicine : function(){
+			var me = this;
+			var param = {};
+			var checkbox = $("#form_table").find("input:checked");
+			if (!checkbox || checkbox.length == 0) {
+				alert("请选择要删除的药品");
+				return;
+			}
+			var obj = checkbox.closest("tr").data("data");
+			var r = confirm("确认删除【"+obj.drug_name+"】这个药品？");
+			if(true == r){
+				param.drug_name = obj.drug_name;
+				$.ajax({
+					type:"POST",
+					url:"medicine/delete.action",
+					data:param,
+					datatype:"json",
+					success:function(result){
+						if(result=="0000")
+							alert("药品"+obj.drug_name+"已经删除");
+						else 
+							alert("删除失败");
+					}
+					
+				});
+			}
+			me.queryMedicine();
+		},
+		
+		build_page_nav : function(url,result) {
+			var me = this;
+		    $("#nav_page").empty();
+		    var ul = $("<ul></ul>").addClass("pagination");
+		    var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href","#"));
+		    var perPageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+		    if(result.page.hasPreviousPage == false){
+		        firstPageLi.addClass("disabled");
+		        perPageLi.addClass("disabled");
+		    }else{
+		        firstPageLi.click(function () {me.to_page(url,1);})
 
-            //unlike navButtons icons, action icons in rows seem to be hard-coded
-            //you can change them like this in here if you want
-            function updateActionIcons(table) {
-				/**
-				var replacement = 
-				{
-					'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
-					'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
-					'ui-icon-disk' : 'ace-icon fa fa-check green',
-					'ui-icon-cancel' : 'ace-icon fa fa-times red'
-				};
-				$(table).find('.ui-pg-div span.ui-icon').each(function(){
-					var icon = $(this);
-					var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-					if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-				})
-				*/
-            }
+		        perPageLi.click(function(){me.to_page(url,result.page.pageNum-1);})
+		    }
+		    var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+		    var lastPageLi = $("<li></li>").append($("<a></a>").append("尾页").attr("href","#"));
+		    if(result.page.hasNextPage == false){
+		        nextPageLi.addClass("disabled");
+		        lastPageLi.addClass("disabled");
+		    }else {
+		        lastPageLi.click(function(){me.to_page(url,result.page.pages)});
+		        nextPageLi.click(function(){me.to_page(url,result.page.pageNum+1)});
+		    }
+		    ul.append(firstPageLi).append(perPageLi);
+		    $.each(result.page.navigatepageNums, function (index, item) {
 
-
-            //replace icons with FontAwesome icons like above
-            function updatePagerIcons(table) {
-                var replacement =
-                    {
-                        'ui-icon-seek-first': 'ace-icon fa fa-angle-double-left bigger-140',
-                        'ui-icon-seek-prev': 'ace-icon fa fa-angle-left bigger-140',
-                        'ui-icon-seek-next': 'ace-icon fa fa-angle-right bigger-140',
-                        'ui-icon-seek-end': 'ace-icon fa fa-angle-double-right bigger-140'
-                    };
-                $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function () {
-                    var icon = $(this);
-                    var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-
-                    if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
-                })
-            }
-
-            function enableTooltips(table) {
-                $('.navtable .ui-pg-button').tooltip({ container: 'body' });
-                $(table).find('.ui-pg-div').tooltip({ container: 'body' });
-            }
-
-            //var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
-
-            $(document).on('ajaxloadstart', function (e) {
-                $(grid_selector).jqGrid('GridUnload');
-                $('.ui-jqdialog').remove();
-            });
-        });
+		        var numLi = $("<li></li>").append($("<a></a>").append(item));
+		        if(result.page.pageNum==item){
+		            numLi.addClass("active");
+		        }else {
+		            numLi.click(function () {
+		                me.to_page(url,item);
+		            })
+		        }
+		        ul.append(numLi);
+		    })
+		    ul.append(nextPageLi).append(lastPageLi).appendTo("#nav_page");
+		},
+		
+		to_page : function(url,pn) {
+		    var param = {};
+		    var me = this;
+		    param.pn = pn;
+			$.ajax({
+		        url:url,
+		        type:"POST",
+		        data:param,
+		        datatype:"json",
+		        success:function (data) {
+		            me.initTableData(data.page.list);
+		            me.build_page_nav(url,data);
+		        }
+		    });
+		}
+		
+	});
+	window.medicine = new medicine();
+}());
+$(function(){
+	medicine.init();
 });

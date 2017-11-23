@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/ui.jqgrid.css" />
     <link rel="stylesheet" href="css/ace-fonts.css" />
     <link rel="stylesheet" href="css/ace.min.css" id="main-ace-style" />
+    <link rel="stylesheet" href="static/js/manage/app/laypage/skin/laypage.css" />
     <!--[if lte IE 9]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
@@ -253,37 +254,182 @@
                 </ul>
             </div>
 
-            <div class="page-content">
-                <div class="page-content-area">
-                    <div class="row ">
-                        <div class="col-xs-12">
-                            <table id="grid-table"></table>
-                            <div id="grid-pager"></div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.page-content-area -->
-            </div>
-            <!-- /.page-content -->
-        </div>
-        <!-- /.main-content -->
+           <div class="page-content" id="data_list">
+				<div class="page-content-area">
 
-        <div class="footer">
-            <div class="footer-inner">
-                <!-- #section:basics/footer -->
-                <div class="footer-content">
+					<div class="row ">
+						<div class="col-xs-12">
+							<h4>药品列表</h4>
+							<form class="form-inline" role="form">
+								<div class="form-group">
+									<label for="f1">药品名：</label>
+									<input type="text" id="Name" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label for="f1">药品类型：</label>
+									<input type="text" id="Type" class="form-control" />
+								</div>
+								<button class="btn btn-search" id="btn_search">搜索</button>
+							</form>
+							<p>
+								<button class="btn btn-white btn-info btn-bold" id="btn_add">
+									<i class="ace-icon fa fa-plus bigger-120 blue"></i>
+									添加
+								</button>
+								<button class="btn btn-white btn-info btn-bold" id="btn_update">
+<!-- 									<i class="ace-icon fa fa-plus bigger-120 red"></i> -->
+									修改
+								</button>
+								<button class="btn btn-white btn-info btn-bold" id="btn_delete">
+									<i class="ace-icon fa fa-trash-o bigger-120 orange"></i>
+									删除
+								</button>
+							</p>
+							
+							<table id="tab_template" style="display:none;">
+	    	<tr id="tr_template">
+	    		<td><input type="checkbox"></td>
+				<td fieldtype="db" dbfield="drug_name"></td>
+				<td fieldtype="db" dbfield="drug_type"></td>
+				<td fieldtype="db" dbfield="manufacturer"></td>
+				<td fieldtype="db" dbfield="price"></td>
+				<td fieldtype="db" dbfield="drug_insurance"></td>
+				<td fieldtype="db" dbfield="drug_propotion"></td>
+				<td fieldtype="db" dbfield="message"></td>
+			</tr>
+	    	</table>
+							<table id="form_table" class="table table-striped table-bordered table-hover">
+								
+									<tr>
+										<th></th>
+										<th>药品名</th>
+										<th>药品类型</th>
+										<th>生产产商</th>
+										<th>价格（元）</th>
+										<th>是否在医保内</th>
+										<th>报销比例</th>
+										<th>功能</th>
+									</tr>
 
-                </div>
-                <!-- /section:basics/footer -->
-            </div>
-        </div>
+							</table>
+							<nav aria-label="Page navigation" id="nav_page">
+							</nav>
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.page-content-area -->
+			</div>
+			<!-- /.page-content -->
+		</div>
+		<!-- /.main-content -->
 
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-        </a>
-    </div>
-    <!-- /.main-container -->
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">添加药品</h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label for="">药品名（不能为空）</label>
+							<input type="text" name="" class="form-control" id="name" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">药品类型</label>
+							<input type="text" name="" class="form-control" id="type" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">生产厂商</label>
+							<input type="text" name="" class="form-control" id="manufacturer" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">价格（元）</label>
+							<input type="text" name="" class="form-control" id="price" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">是否在医保内</label>
+							<input type="text" name="" class="form-control" id="insurance" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">报销比例（非医保内药物，该项请填写为0.0）</label>
+							<input type="text" name="" class="form-control" id="propotion" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">功能</label>
+							<input type="text" name="" class="form-control" id="message" placeholder="">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+						<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="myModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">修改药品</h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="form-group">
+							<label for="">药品名（不能为空）</label>
+							<input type="text" name="" class="form-control" id="drug_name" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">药品类型</label>
+							<input type="text" name="" class="form-control" id="drug_type" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">生产厂商</label>
+							<input type="text" name="" class="form-control" id="drug_manufacturer" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">价格（元）</label>
+							<input type="text" name="" class="form-control" id="drug_price" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">是否在医保内</label>
+							<input type="text" name="" class="form-control" id="drug_insurance" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">报销比例（非医保内药物，该项请填写为0.0）</label>
+							<input type="text" name="" class="form-control" id="drug_propotion" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">功能</label>
+							<input type="text" name="" class="form-control" id="drug_message" placeholder="">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+						<button type="button" id="submit" class="btn btn-primary" data-dismiss="modal">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div>
+	<!-- /.main-container -->
 
     <!--[if !IE]> -->
     <script type="text/javascript">
@@ -307,7 +453,10 @@
     <!-- <script src="assets/js/ace-elements.min.js"></script> -->
     <script src="js/ace.min.js"></script>
     <script src="js/ace-extra.min.js"></script>
-
+	<script src="static/lib/layer/layer.js"></script>
+	<script src="static/js/manage/app/laypage/laypage.js"></script>
+	<script src="static/js/common/Base.js"></script>
+	<script src="static/js/common/WYUtil.js"></script>
     <script src="js/jqGrid/jquery.jqGrid.min.js"></script>
     <script src="js/jqGrid/i18n/grid.locale-en.js"></script>
     <script src="InformationMaintenance/medicine.js"></script>

@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.manage.dao.MedicineDao;
 import com.manage.domain.Medicine;
 
@@ -64,26 +65,37 @@ public class MedicineController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/querySome", method = RequestMethod.POST)
-	public List<Medicine> selectMedicineByAttribute(HttpServletRequest param){ 
+	public Map<Object, Object> selectMedicineByAttribute(HttpServletRequest param){ 
+		Map<Object, Object> result = new HashMap<Object, Object>();
 		List<Medicine> list = new ArrayList<Medicine>();
 		Map<Object, Object> params = new HashMap<Object, Object>();
 		params.put("drug_type", param.getParameter("drug_type"));
 		params.put("drug_name", param.getParameter("drug_name"));
-		List<Map> medicine_list = medicineDao.findMedicineByAttribute(params);
-		Medicine medicine;
-		for(Map map: medicine_list){
-			medicine = new Medicine();
-			medicine.setDrug_name((String.valueOf(map.get("drug_name"))));
-			medicine.setDrug_type((String.valueOf(map.get("drug_type"))));
-			medicine.setManufacturer((String.valueOf(map.get("manufacturer"))));
-			medicine.setDrug_insurance((Integer.valueOf(String.valueOf(map.get("drug_insurance")))));
-			medicine.setDrug_propotion((Double.valueOf(String.valueOf(map.get("drug_propotion")))));
-			medicine.setPrice((Double.valueOf(String.valueOf(map.get("price")))));
-			medicine.setMessage((String.valueOf(map.get("message"))));
-			
-			list.add(medicine);
-		}
-		return list;
+		PageHelper.startPage(Integer.valueOf(param.getParameter("pn")),10);
+//		int pages = (Integer.valueOf(String.valueOf(param.getParameter("page"))) -1)*10;
+//		params.put("rows", Integer.valueOf(param.getParameter("rows")));
+//		params.put("pages", pages);
+//		int total = medicineDao.findMedicineByAttribute(null).size();
+//		if (0==total%10) total = total / 10;
+//		else total = total / 10 + 1;
+		List<Medicine> medicine_list = medicineDao.findMedicineByAttribute(params);
+//		Medicine medicine;
+//		for(Map map: medicine_list){
+//			medicine = new Medicine();
+//			medicine.setDrug_name((String.valueOf(map.get("drug_name"))));
+//			medicine.setDrug_type((String.valueOf(map.get("drug_type"))));
+//			medicine.setManufacturer((String.valueOf(map.get("manufacturer"))));
+//			medicine.setDrug_insurance((Integer.valueOf(String.valueOf(map.get("drug_insurance")))));
+//			medicine.setDrug_propotion((Double.valueOf(String.valueOf(map.get("drug_propotion")))));
+//			medicine.setPrice((Double.valueOf(String.valueOf(map.get("price")))));
+//			medicine.setMessage((String.valueOf(map.get("message"))));
+//			
+//			list.add(medicine);
+//		}
+		PageInfo page = new PageInfo(medicine_list);
+		result.put("page", page);
+//		result.put("pageCount", total);
+		return result;
 	}
 	
 	/*
