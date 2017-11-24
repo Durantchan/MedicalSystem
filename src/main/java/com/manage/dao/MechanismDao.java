@@ -1,5 +1,7 @@
 package com.manage.dao;
 
+import com.manage.domain.Mechanism;
+
 import java.util.Map;
 
 /**
@@ -19,5 +21,7 @@ public interface MechanismDao {
 		//单个删除医疗机构信息
 		public abstract void deleteMechanismBySingle(Map map);
 		//修改医疗机构信息
-		public abstract void updateMechanism(Map map); 
+		public abstract void updateMechanism(Map map);
+	//根据机构名查找机构
+	Mechanism findMechanismByName(String mechanism_name);
 }

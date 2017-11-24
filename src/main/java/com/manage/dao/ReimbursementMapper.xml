@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.manage.dao.ReimbursementDao">
+
+    <insert id="addNewReimbursement" parameterType="com.manage.domain.Reimbursement" useGeneratedKeys="true" keyProperty="id">
+        insert into reimbursement (account,reim_name,service_type,drug,mechanism_name,treat_name,total_price,sum_price,status,reimbursement_time)
+        values (#{account},#{reimName},#{service},#{drug},#{mechanismName},#{treatName},#{totalPrice},#{sumPrice},#{status},#{reimTime})
+    </insert>
+
+    <select id="findMaxReimbursementId" resultType="int">
+        select max(id) from reimbursement
+    </select>
+</mapper>

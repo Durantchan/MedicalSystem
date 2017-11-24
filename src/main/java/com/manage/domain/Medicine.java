@@ -3,23 +3,23 @@ package com.manage.domain;
 import java.io.Serializable;
 
 /*
- * Ò©Æ·ĞÅÏ¢
+ * è¯å“ä¿¡æ¯
  * @Durantchan 2017.11.16
  */
 public class Medicine implements Serializable{
-	private String drug_name;	//Ò©Æ·Ãû
-	private String drug_type;	//Ò©Æ·ÀàĞÍ
-	private String manufacturer;	//Éú²ú²úÉÌ
-	private double price;			//¼Û¸ñ
-	private double drug_propotion;	//ÊÇ·ñÔÚÒ½±£ÄÚ
-	private String drug_insurance;		//±¨Ïú±ÈÀı
-	private String message;			//¹¦ÄÜ
-	
-	public Medicine(){ 
-		
+	private String drug_name;	//è¯å“å
+	private String drug_type;	//è¯å“ç±»å‹
+	private String manufacturer;	//ç”Ÿäº§äº§å•†
+	private double price;			//ä»·æ ¼
+	private double drug_propotion;	//æ˜¯å¦åœ¨åŒ»ä¿å†…
+	private String drug_insurance;		//æŠ¥é”€æ¯”ä¾‹
+	private String message;			//åŠŸèƒ½
+
+	public Medicine(){
+
 	}
-	
-	public Medicine(String name,String type,String manufacturer,double price,double drug_propotion,String drug_insurance,String message){ 
+
+	public Medicine(String name,String type,String manufacturer,double price,double drug_propotion,String drug_insurance,String message){
 		this.drug_name = name;
 		this.drug_type = type;
 		this.manufacturer = manufacturer;
@@ -27,7 +27,7 @@ public class Medicine implements Serializable{
 		this.drug_propotion = drug_propotion;
 		this.drug_insurance = drug_insurance;
 		this.message = message;
-	
+
 	}
 	public String getDrug_name() {
 		return drug_name;
@@ -57,9 +57,9 @@ public class Medicine implements Serializable{
 		return drug_insurance;
 	}
 	public void setDrug_insurance(int drug_insurance) {
-		this.drug_insurance = "ÊÇ";
+		this.drug_insurance = "æ˜¯";
 		if (0==drug_insurance) {
-			this.drug_insurance = "·ñ";
+			this.drug_insurance = "å¦";
 		}
 	}
 	public String getManufacturer() {

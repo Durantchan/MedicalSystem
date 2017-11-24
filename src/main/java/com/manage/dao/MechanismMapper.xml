@@ -37,4 +37,8 @@
 	update mechanism set mechanism_type = #{mechanism_type}, mechanism_address = #{mechanism_address}, mechanism_phone = #{mechanism_phone}
 	where mechanism_name = #{mechanism_name}
 	</update>
+
+	<select id="findMechanismByName"  resultType="com.manage.domain.Mechanism" parameterType="String">
+		select * from mechanism t where t.mechanism_name = #{mechanism_name}
+	</select>
 </mapper>

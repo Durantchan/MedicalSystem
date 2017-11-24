@@ -13,376 +13,380 @@
     <link rel="stylesheet" href="css/ace.min.css" id="main-ace-style" />
 
     <!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-		<![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
     <!--[if lte IE 8]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body class="no-skin">
-    <div id="navbar" class="navbar navbar-default">
-        <div class="navbar-container" id="navbar-container">
-            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
-                <span class="sr-only">Toggle sidebar</span>
+<div id="navbar" class="navbar navbar-default">
+    <div class="navbar-container" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+            <span class="sr-only">Toggle sidebar</span>
 
-                <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
-                <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
-                <span class="icon-bar"></span>
-            </button>
-            <!-- /section:basics/sidebar.mobile.toggle -->
-            <div class="navbar-header pull-left">
-                <!-- #section:basics/navbar.layout.brand -->
-                <a href="index.html" class="navbar-brand">
-                    <small>
-                        <p>医疗报销中心报销系统</p>
-                    </small>
-                </a>
-            </div>
-            <div class="navbar-buttons navbar-header pull-right" role="navigation">
-                <ul class="nav ace-nav">
-                    <li class="light-blue">
-                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="avatars/user.jpg" alt="Jason's Photo" />
-                            <span class="user-info">
+            <span class="icon-bar"></span>
+        </button>
+        <!-- /section:basics/sidebar.mobile.toggle -->
+        <div class="navbar-header pull-left">
+            <!-- #section:basics/navbar.layout.brand -->
+            <a href="index.html" class="navbar-brand">
+                <small>
+                    <p>医疗报销中心报销系统</p>
+                </small>
+            </a>
+        </div>
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="avatars/user.jpg" alt="Jason's Photo" />
+                        <span class="user-info">
                                 欢迎您
                                 <br /> 陈子昂
                             </span>
-                            <i class="ace-icon fa fa-caret-down"></i>
-                        </a>
-
-                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-cog"></i>
-                                    系统设置
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="profile.html">
-                                    <i class="ace-icon fa fa-user"></i>
-                                    个人信息设置
-                                </a>
-                            </li>
-
-                            <li class="divider"></li>
-
-                            <li>
-                                <a href="login.html">
-                                    <i class="ace-icon fa fa-power-off"></i>
-                                    登出
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /section:basics/navbar.dropdown -->
-        </div>
-        <!-- /.navbar-container -->
-    </div>
-    <!-- /section:basics/navbar.layout -->
-    <div class="main-container" id="main-container">
-        <!-- #section:basics/sidebar -->
-        <div id="sidebar" class="sidebar responsive">
-            <ul class="nav nav-list">
-                <li class="">
-                    <a href="index.html">
-                        <i class="menu-icon fa fa-tachometer"></i>
-                        <span class="menu-text"> 报销系统 </span>
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-desktop"></i>
-                        <span class="menu-text"> 人员信息 </span>
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="insurant.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                参保人信息
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="insuredCompany.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                参保单位信息
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-pencil-square-o"></i>
-                        <span class="menu-text"> 医疗信息 </span>
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="medicine.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                药品信息
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="clinicItems.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                诊疗项目信息
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="serviceFacility.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                服务设施项目
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-                        <li class="">
-                            <a href="calculationParameter.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                费用计算参数
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="medicalInstitutions.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                定点医疗机构信息
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="active open">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text"> 审批 </span>
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li class="active">
-                            <a href="qualificationExamination.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                报销资格审批
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-list-alt"></i>
-                        <span class="menu-text"> 报销 </span>
-                        <b class="arrow fa fa-angle-down"></b>
+                        <i class="ace-icon fa fa-caret-down"></i>
                     </a>
 
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="reimbursement.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                审核报销
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-cog"></i>
+                                系统设置
                             </a>
-                            <b class="arrow"></b>
                         </li>
-                    </ul>
-                </li>
 
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-search"></i>
-                        <span class="menu-text"> 信息查询 </span>
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                    <b class="arrow"></b>
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="costSearch.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                费用信息查询
+                        <li>
+                            <a href="profile.html">
+                                <i class="ace-icon fa fa-user"></i>
+                                个人信息设置
                             </a>
-                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="login.html">
+                                <i class="ace-icon fa fa-power-off"></i>
+                                登出
+                            </a>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-            </div>
         </div>
+        <!-- /section:basics/navbar.dropdown -->
+    </div>
+    <!-- /.navbar-container -->
+</div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <!-- #section:basics/sidebar -->
+    <div id="sidebar" class="sidebar responsive">
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="index.html">
+                    <i class="menu-icon fa fa-tachometer"></i>
+                    <span class="menu-text"> 报销系统 </span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> 人员信息 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="insurant.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            参保人信息
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
 
-        <!-- /section:basics/sidebar -->
-        <div class="main-content">
-            <!-- #section:basics/content.breadcrumbs -->
-            <div class="breadcrumbs" id="breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="index.html">系统首页</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">审批</a>
-                    </li>
-                    <li>
-                        <a href="qualificationExamination.html">报销资格审批</a>
+                    <li class="">
+                        <a href="insuredCompany.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            参保单位信息
+                        </a>
+                        <b class="arrow"></b>
                     </li>
                 </ul>
-            </div>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-pencil-square-o"></i>
+                    <span class="menu-text"> 医疗信息 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="medicine.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            药品信息
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
 
-            <div class="page-content">
-                <div class="page-content-area">
+                    <li class="">
+                        <a href="clinicItems.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            诊疗项目信息
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
 
-                    <div class="row ">
-                        <div class="col-xs-12">
-                            <h4>请输入审核信息</h4>
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" for="reim_name"> 报销人姓名：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" id="reim_name" placeholder="输入报销人姓名" class="col-xs-10 col-sm-5" />
-                                    </div>
-                                </div>
+                    <li class="">
+                        <a href="serviceFacility.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            服务设施项目
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="calculationParameter.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            费用计算参数
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
 
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" for="drug">药品使用：</label>
-                                    <div class="col-sm-9">
-                                        <div class="inline">
-                                            <input type="text" name="tags" id="drug" value="" placeholder="每输入一个药品，按回车确认" />
-                                        </div>
-                                    </div>
-                                </div>
+                    <li class="">
+                        <a href="medicalInstitutions.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            定点医疗机构信息
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
 
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" for="service_type"> 服务设施：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" id="service_type" placeholder="输入服务设施" class="col-xs-10 col-sm-5" />
-                                    </div>
-                                </div>
+            <li class="active open">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text"> 审批 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="active">
+                        <a href="qualificationExamination.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            报销资格审批
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
 
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" for="mechanism_name"> 医疗机构名称：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" id="mechanism_name" placeholder="输入医疗机构名称" class="col-xs-10 col-sm-5" />
-                                    </div>
-                                </div>
+                </ul>
+            </li>
 
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right" for="treat_name"> 诊疗项目：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" id="treat_name" placeholder="输入诊疗项目" class="col-xs-10 col-sm-5" />
-                                    </div>
-                                </div>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list-alt"></i>
+                    <span class="menu-text"> 报销 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
 
-                                <div class="clearfix form-actions">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button class="btn btn-info" type="button" onclick="exam()">
-                                            <i class="ace-icon fa fa-check bigger-110"></i>
-                                            审核
-                                        </button>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="reimbursement.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            审核报销
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
 
-                                        &nbsp; &nbsp; &nbsp;
-                                        <button class="btn" type="reset">
-                                            <i class="ace-icon fa fa-undo bigger-110"></i>
-                                            清空
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.page-content-area -->
-            </div>
-            <!-- /.page-content -->
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-search"></i>
+                    <span class="menu-text"> 信息查询 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="costSearch.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            费用信息查询
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
         </div>
-        <!-- /.main-content -->
-
-        <div class="footer">
-            <div class="footer-inner">
-                <!-- #section:basics/footer -->
-                <div class="footer-content">
-
-                </div>
-                <!-- /section:basics/footer -->
-            </div>
-        </div>
-
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-        </a>
     </div>
-    <!-- /.main-container -->
 
-    <!--[if !IE]> -->
-    <script type="text/javascript">
-        window.jQuery || document.write("<script src='js/jquery.min.js'>" + "<" + "/script>");
-    </script>
-    <!-- <![endif]-->
-    <!--[if IE]>
-			<script type="text/javascript">
-			 window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
-			</script>
-		<![endif]-->
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement) document.write("<script src='js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-    </script>
-    <script src="js/bootstrap.min.js"></script>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <!-- #section:basics/content.breadcrumbs -->
+        <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="index.html">系统首页</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">审批</a>
+                </li>
+                <li>
+                    <a href="qualificationExamination.html">报销资格审批</a>
+                </li>
+            </ul>
+        </div>
 
-    <!-- page specific plugin scripts -->
+        <div class="page-content">
+            <div class="page-content-area">
 
-    <!--[if lte IE 8]>
-              <script src="assets/js/excanvas.min.js"></script>
-            <![endif]-->
-    <script src="js/bootstrap-tag.min.js"></script>
-    <!-- ace scripts -->
-    <script src="js/ace-elements.min.js"></script>
-    <script src="js/ace.min.js"></script>
+                <div class="row ">
+                    <div class="col-xs-12">
+                        <h4>请输入审核信息</h4>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="reim_name"> 报销人姓名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="reim_name" placeholder="输入报销人姓名" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
 
-    <!-- inline scripts related to this page -->
-    <script>
-        var tag_input = $('#drug');
-        try {
-            tag_input.tag(
-                {
-                    placeholder: tag_input.attr('placeholder'),
-                    //enable typeahead by specifying the source array
-                   
-                }
-            )
-            var $tag_obj = $('#drug').data('tag');
-        }
-        catch (e) {
-            //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
-            tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
-            //$('#form-field-tags').autosize({append: "\n"});
-        }
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="idcard"> 报销人身份证：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="idcard" placeholder="输入报销人身份证" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
 
-        function exam() {
-            
-        }
-    </script>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="drug">药品使用：</label>
+                                <div class="col-sm-9">
+                                    <div class="inline">
+                                        <input type="text" name="tags" id="drug" value="" placeholder="每输入一个药品，按回车确认" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="service_type"> 服务设施：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="service_type" placeholder="输入服务设施" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="mechanism_name"> 医疗机构名称：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="mechanism_name" placeholder="输入医疗机构名称" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="treat_name"> 诊疗项目：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="treat_name" placeholder="输入诊疗项目" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="button" onclick="exam()">
+                                        <i class="ace-icon fa fa-check bigger-110"></i>
+                                        审核
+                                    </button>
+
+                                    &nbsp; &nbsp; &nbsp;
+                                    <button class="btn" type="reset">
+                                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                                        清空
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.page-content-area -->
+        </div>
+        <!-- /.page-content -->
+    </div>
+    <!-- /.main-content -->
+
+    <div class="footer">
+        <div class="footer-inner">
+            <!-- #section:basics/footer -->
+            <div class="footer-content">
+
+            </div>
+            <!-- /section:basics/footer -->
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>
+<!-- /.main-container -->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='js/jquery.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+
+<!--[if lte IE 8]>
+<script src="assets/js/excanvas.min.js"></script>
+<![endif]-->
+<script src="js/bootstrap-tag.min.js"></script>
+<!-- ace scripts -->
+<script src="js/ace-elements.min.js"></script>
+<script src="js/ace.min.js"></script>
+<script src="reim.js"></script>
+<!-- inline scripts related to this page -->
+<script>
+    var tag_input = $('#drug');
+    try {
+        tag_input.tag(
+            {
+                placeholder: tag_input.attr('placeholder'),
+                //enable typeahead by specifying the source array
+
+            }
+        )
+        var $tag_obj = $('#drug').data('tag');
+    }
+    catch (e) {
+        //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+        tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
+        //$('#form-field-tags').autosize({append: "\n"});
+    }
+
+</script>
 </body>
 
 </html>
