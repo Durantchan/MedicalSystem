@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -35,6 +36,7 @@ public class ReimbursementController {
     @Resource
     private TreatmentDao treatmentDao;
 
+
     /**
      * 报销资格审核
      */
@@ -45,12 +47,14 @@ public class ReimbursementController {
                                                  @RequestParam("drug") String drug,
                                                  @RequestParam("service_type") String service,
                                                  @RequestParam("mechanism_name") String mechanism_name,
-                                                 @RequestParam("treat_name") String treat_name) {
+                                                 @RequestParam("treat_name") String treat_name,
+                                                 HttpSession session) {
 
         Map<Object, Object> result = new HashMap<Object, Object>();
         double total_price = 0;
         double sum_price = 0;
-        String userName = "luanmaa";
+
+        String userName = (String) session.getAttribute("account");
         Mechanism mechanism = mechanismDao.findMechanismByName(mechanism_name);
         Map insurant = insurantDao.findInsurantByIdcard(idcard);
         if (insurant == null || !insurant.get("user_name").equals(reim_name)) {
