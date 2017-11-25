@@ -44,9 +44,9 @@ public class UserController {
         }
     }
 
-    @GetMapping("logout")
-    public String logout(HttpSession session){
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpSession session){
         session.removeAttribute("account");
-        return "login";
+        return new ModelAndView("redirect:/login.html");
     }
 }

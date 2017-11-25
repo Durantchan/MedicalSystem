@@ -15,8 +15,9 @@ import javax.servlet.http.HttpSession;
 public class LoginHandlerIntercepter implements HandlerInterceptor{
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse arg1, Object o) throws Exception {
+
         String requestURI = request.getRequestURI();
-        if(requestURI.indexOf("index")>0){
+        if(requestURI.indexOf("index.html")>0){
             //说明处在编辑的页面
             HttpSession session = request.getSession();
             String account = (String) session.getAttribute("account");
