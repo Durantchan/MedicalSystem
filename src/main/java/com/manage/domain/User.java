@@ -4,44 +4,45 @@ package com.manage.domain;
  */
 public class User {
     // 成员变量
-    private Integer userid;
-    private String username;
-    private String passwd;
+    private String account;
+    private String password;
+    private String email;
 
     // 构造函数
     public User() {
         super();
     }
 
-    public User(Integer userid, String username, String password) {
+
+    public User(String account, String password, String email) {
         super();
-        this.userid = userid;
-        this.username = username;
-        this.passwd = password;
+        this.account = account;
+        this.password = password;
+        this.email = email;
     }
 
-    // 成员方法
-    public Integer getUserid() {
-        return userid;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {
-        return passwd;
+        return password;
     }
 
-    public void setPassword(String password) {
-        this.passwd = password;
+    public void setPassword(String passwd) {
+        this.password = passwd;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
