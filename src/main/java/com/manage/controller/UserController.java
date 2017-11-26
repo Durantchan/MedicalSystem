@@ -2,10 +2,9 @@ package com.manage.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.manage.dao.UserDao;
@@ -33,15 +32,18 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(User model, HttpSession session) {
-        User user = userDao.findByAccount(model.getAccount());
+    @ResponseBody
+    public JSONObject login(@RequestParam("account") String account, @RequestParam("password") String password, HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
+        User user = userDao.findByAccount(account);
 
-        if (null == user || !user.getPassword().equals(model.getPassword())) {
-            return new ModelAndView("redirect:/login.html");
+        if (null == user || !user.getPassword().equals(password)) {
+            jsonObject.put("result", "用户名和密码不匹配！");
         } else {
             session.setAttribute("account", user.getAccount());
-            return new ModelAndView("redirect:/index.html");
+            jsonObject.put("result", "success");
         }
+        return jsonObject;
     }
 
     @GetMapping("/logout")
