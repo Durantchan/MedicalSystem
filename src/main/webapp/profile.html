@@ -49,7 +49,6 @@
 						<img class="nav-user-photo" src="avatars/user.png" alt="Jason's Photo" />
 						<span class="user-info">
                                 欢迎您
-                                <br /> 陈子昂
                             </span>
 						<i class="ace-icon fa fa-caret-down"></i>
 					</a>
@@ -251,7 +250,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="account"> 账号：</label>
 								<div class="col-sm-9">
-									<input type="text" id="account" placeholder="输入账号名称" class="col-xs-10 col-sm-5" />
+									<input type="text" id="account" placeholder="输入账号名称" class="col-xs-10 col-sm-5" disabled/>
 								</div>
 							</div>
 
@@ -271,10 +270,10 @@
 
 							<div class="clearfix form-actions">
 								<div class="col-md-offset-3 col-md-9">
-									<button class="btn btn-info" type="button" onclick="exam()">
+									<a class="btn btn-info" id="modifyInfo" type="button">
 										<i class="ace-icon fa fa-check bigger-110"></i>
 										修改
-									</button>
+									</a>
 
 									&nbsp; &nbsp; &nbsp;
 									<button class="btn" type="reset">
@@ -335,6 +334,33 @@
 <script src="js/ace-elements.min.js"></script>
 <script src="js/ace.min.js"></script>
 <!-- inline scripts related to this page -->
+<script>
+	$.get(
+	    "user/getInfo.action",
+		function (data) {
+	        $("#account").val(data.account);
+            $("#email").val(data.email);
+        }
+	);
+
+	$("#modifyInfo").click(function () {
+		$.post(
+		    "user/modifyInfo.action",
+			{
+			    account:  $("#account").val(),
+				password: $("#password").val(),
+				email:    $("#email").val()
+			},
+			function (data) {
+				if(data.result=="success"){
+				    alert("修改成功！");
+				}else{
+                    alert("修改失败，请检查网络是否有问题。");
+				}
+            }
+		)
+    });
+</script>
 </body>
 
 </html>

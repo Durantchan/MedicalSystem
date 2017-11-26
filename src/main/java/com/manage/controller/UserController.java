@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.manage.dao.UserDao;
 import com.manage.domain.User;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -43,6 +45,29 @@ public class UserController {
             session.setAttribute("account", user.getAccount());
             jsonObject.put("result", "success");
         }
+        return jsonObject;
+    }
+
+    @RequestMapping(value = "/getInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject getInfo(HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
+        User user = userDao.findByAccount(session.getAttribute("account").toString());
+        jsonObject.put("email", user.getEmail());
+        jsonObject.put("account", user.getAccount());
+        return jsonObject;
+    }
+
+    @RequestMapping(value = "/modifyInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject modifyInfo(@RequestParam("account") String account, @RequestParam("password") String password, @RequestParam("email") String email ) {
+        JSONObject jsonObject = new JSONObject();
+        Map<Object, Object> userMap = new HashMap<Object, Object>();
+        userMap.put("account", account);
+        userMap.put("password", password);
+        userMap.put("email", email);
+        userDao.updateInfo(userMap);
+        jsonObject.put("result", "success");
         return jsonObject;
     }
 

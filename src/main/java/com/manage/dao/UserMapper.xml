@@ -8,4 +8,8 @@
     <select id="findByEmail" parameterType="String" resultType="com.manage.domain.User">
         select * from user where email = #{email}
     </select>
+    <update id="updateInfo" parameterType="Map">
+        update user set password = #{password}, email = #{email}
+        where account = #{account}
+    </update>
 </mapper>
