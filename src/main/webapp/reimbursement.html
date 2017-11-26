@@ -363,6 +363,17 @@
 
 <script>
     $(function () {
+        $('#reimId').append("");
+        $('#reim_time').append("");
+        $('#userName').append("");
+        $('#reim_name').append("");
+        $('#drug').append("");
+        $('#mechanism_name').append("");
+        $('#service_type').append("");
+        $('#treat_name').append("");
+        $('#total_price').append("");
+        $('#sum_price').append("");
+
         $('#reimId').append(window.localStorage.getItem("reimID"));
         $('#reim_time').append(window.localStorage.getItem("reimTime"));
         $('#userName').append(window.localStorage.getItem("account"));
@@ -373,6 +384,7 @@
         $('#treat_name').append(window.localStorage.getItem("treat_name"));
         $('#total_price').append(window.localStorage.getItem("total_price"));
         $('#sum_price').append(window.localStorage.getItem("sum_price"));
+        window.localStorage.clear()
     });
 </script>
 </body>
